@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Slider</title>
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="slider.js">
+	</script>
+</head>
+<body>
+
+	<div class="frame">
+
+	<h1>Bottle worth converter</h1>
+
+	<input type="range" min="0" max="1200" name="" onchange="updateNum()" id="slider" value="0">
+	<input type="number" id="num" value="0" onchange="updateSlider()">
+	<label>Bottles</label>
+	<p>Dollar equivalent: <span id="label">0</span>$</p>
+
+	<img id="icon" src="nothing.svg">
+	<p id="lbl"></p>
+	</div>
+
+</body>
+</html>
