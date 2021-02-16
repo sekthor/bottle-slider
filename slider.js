@@ -22,35 +22,37 @@ function setLabel(string) {
 	document.getElementById("lbl").innerHTML = string;
 }
 
+function setIcon(icon) {
+	document.getElementById("icon").src = icon;
+}
+
 function updateIcon(value) {
 
 	switch (true) {
 
 		case value > 1000:
-			src = "home.svg";
+			setIcon("home.svg");
 			setLabel("A Home built with plastic bottles");
 			break;
-			
+
 		case value > 500:
-			src = "salary.svg";
+			setIcon("salary.svg");
 			setLabel("A months salary of a recycling factory worker");
 			break;
 
 		case value > 100:
-			src = "feast.svg";
+			setIcon("feast.svg");
 			setLabel("Feeds a Family for a week");
 			break;
 
 		case value > 10:
-			src = "meal.svg";
+			setIcon("meal.svg");
 			setLabel("One meal");
 			break;
 
 		default:
-			src = "nothing.svg";
+			setIcon("nothing.svg");
 			setLabel("");
 			break;
 	}
-
-	document.getElementById("icon").src = src;
 }
