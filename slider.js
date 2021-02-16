@@ -24,25 +24,32 @@ function setLabel(string) {
 
 function updateIcon(value) {
 
-	if (value >= 1000) {
-		src = "home.svg";
-		setLabel("A Home built with plastic bottles");
-	}
-	else if (value >= 300) {
-		src = "salary.svg";
-		setLabel("A months salary of a recycling factory worker");
-	}
-	else if (value >= 100) {
-		src = "feast.svg"
-		setLabel("Feeds a Family for a week");
-	}
-	else if (value >= 10) {
-		src = "meal.svg";
-		setLabel("One meal")
-	}
-	else {
-		src = "nothing.svg";
-		setLabel("");
+	switch (true) {
+
+		case value > 1000:
+			src = "home.svg";
+			setLabel("A Home built with plastic bottles");
+			break;
+			
+		case value > 500:
+			src = "salary.svg";
+			setLabel("A months salary of a recycling factory worker");
+			break;
+
+		case value > 100:
+			src = "feast.svg";
+			setLabel("Feeds a Family for a week");
+			break;
+
+		case value > 10:
+			src = "meal.svg";
+			setLabel("One meal");
+			break;
+
+		default:
+			src = "nothing.svg";
+			setLabel("");
+			break;
 	}
 
 	document.getElementById("icon").src = src;
