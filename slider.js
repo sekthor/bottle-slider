@@ -22,8 +22,13 @@ function setLabel(string) {
 	document.getElementById("lbl").innerHTML = string;
 }
 
+function setIcon(icon) {
+	document.getElementById("icon").src = icon;
+}
+
 function updateIcon(value) {
 
+<<<<<<< HEAD
 	if (value >= 1000) {
 		src = "home.svg";
 		setLabel("A Home built with plastic bottles");
@@ -44,6 +49,33 @@ function updateIcon(value) {
 		src = "nothing.svg";
 		setLabel("");
 	}
+=======
+	switch (true) {
 
-	document.getElementById("icon").src = src;
+		case value > 1000:
+			setIcon("home.svg");
+			setLabel("A Home built with plastic bottles");
+			break;
+
+		case value > 500:
+			setIcon("salary.svg");
+			setLabel("A months salary of a recycling factory worker");
+			break;
+>>>>>>> 7af59cb477faff636d73ce0b33a5bcec20a62290
+
+		case value > 100:
+			setIcon("feast.svg");
+			setLabel("Feeds a Family for a week");
+			break;
+
+		case value > 10:
+			setIcon("meal.svg");
+			setLabel("One meal");
+			break;
+
+		default:
+			setIcon("nothing.svg");
+			setLabel("");
+			break;
+	}
 }

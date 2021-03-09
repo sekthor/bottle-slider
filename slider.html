@@ -13,7 +13,7 @@
 
 	<h1>Bottle worth converter</h1>
 
-	<input type="range" min="0" max="1200" name="" onchange="updateNum()" id="slider" value="0">
+	<input type="range" min="0" max="1200" name="" oninput="updateNum()" id="slider" value="0">
 	<input type="number" id="num" value="0" onchange="updateSlider()">
 	<label>Bottles</label>
 	<p>Dollar equivalent: <span id="label">0</span>$</p>
