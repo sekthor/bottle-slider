@@ -1,0 +1,100 @@
+<html>
+    <head></head>
+    <body>
+        
+   
+<!--This is the start of the bottle slider frame-->
+<!--author: sekthor-->
+<div class="bottle-frame">
+
+    <style>
+        .bottle-frame {
+            text-align: center;
+        }
+        #bottle-slider {
+            background: #dddddd;
+            height: 5px;
+        }
+        #bottle-slider::-webkit-slider-thumb {
+            height: 5px;
+            border-radius: 5px;
+        }
+        #bottle-slider::-moz-range-thumb {
+            height: 15px;
+            border-radius: 15px;
+            background-color: white;
+        }
+        #bottle-num {
+            border: 1px solid #ddd;
+            padding: 0.5em;
+            max-width: 5em;
+        }
+        #bottle-icon {
+            max-height: 5em;
+        }
+    </style>
+
+    <script>
+        const conversionrate = 8;
+        // updates number of bottles when slider changes
+        function updateNum() {
+            let value = document.getElementById("bottle-slider").value;
+            document.getElementById("bottle-num").value = value;
+            update(value);
+        }
+        // updates slider when number of bottles changes
+        function updateSlider() {
+            let value = document.getElementById("bottle-num").value;
+            document.getElementById("bottle-slider").value = value;
+            update(value);
+        }
+
+        function setDollars(value) {
+            document.getElementById("dollar-label").innerHTML = value;
+        }
+        function setLabel(string) {
+            document.getElementById("description-label").innerHTML = string;
+        }
+        function setIcon(string) {
+            document.getElementById("bottle-icon").src = string;
+        }
+        // updates dollars, description and icon based on value
+        function update(value) {
+
+            setDollars(Math.floor(value / conversionrate));
+
+            if (value >= 1000) {
+                setIcon("home.svg");
+                setLabel("A Home built with plastic bottles");
+            }
+            else if (value >= 600) {
+                setIcon("salary.svg");
+                setLabel("A months salary of a recycling factory worker");
+            }
+            else if (value >= 300) {
+                setIcon("feast.svg");
+                setLabel("Feeds a Family for a week");
+            }
+            else if (value >= 10) {
+                setIcon("meal.svg");
+                setLabel("One meal");
+            }
+            else {
+                setIcon("nothing.svg");
+                setLabel("");
+            }
+        }
+    </script>
+
+
+	<input type="range" min="0" max="1200" name="" onchange="updateNum()" id="bottle-slider" value="0">
+	<input type="number" id="bottle-num" value="0" onchange="updateSlider()">
+	<label>Bottles</label>
+	<p>Dollar equivalent: <span id="dollar-label">0</span>$</p>
+
+	<img id="bottle-icon" src="nothing.svg">
+	<p id="description-label"></p>
+</div>
+<!--This is the end of the bottle slider frame-->
+</body>
+</html>
