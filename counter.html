@@ -1,0 +1,53 @@
+<html>
+<head>
+    <style>
+        body {
+            font-family: 'Nunito', fjalla one;
+        }
+        span {
+            font-size: 2em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<p>Bottles saved <span id="bottles">0</span></p>
+<p>Meals distributed <span id="meals">0</span></p>
+<p>Salaries paid <span id="salary">0</span></p>
+<p>Families supported <span id="families">0</span></p>
+
+<script>
+const DURATION = 2000; // in milliseconds
+const BOTTLES_SAVED = 32400;
+const MEALS_DISTRIBUTED = 19800;
+const SALARRIES_PAID = 391;
+const FAMILIES_SUPPORTED = 160;
+
+function animateValue(id, start, end, duration) {
+    if (start === end) return;
+    var range = end - start;
+    var current = start;
+    var increment_size = end > 10000 ? 100 : 1;
+    var increment = end > start? increment_size : -1 * increment_size;
+    var stepTime = Math.abs(Math.floor(duration / range));
+    var obj = document.getElementById(id);
+    var timer = setInterval(function() {
+        current += increment;
+        obj.innerHTML = current;
+        if (current == end) {
+            clearInterval(timer);
+        }
+    }, stepTime);
+}
+
+window.onload = function() {
+    animateValue("bottles", 0, BOTTLES_SAVED, DURATION);
+    animateValue("meals", 0, MEALS_DISTRIBUTED, DURATION);
+    animateValue("salary", 0, SALARRIES_PAID, DURATION);
+    animateValue("families", 0, FAMILIES_SUPPORTED, DURATION);
+}
+</script>
+
+</body>
+</html>

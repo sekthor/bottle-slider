@@ -4,6 +4,13 @@
         body {
             font-family: sans-serif;
         }
+        #bfwp-donation-slider {
+            border: 1px solid #ddd;
+            display: block;
+            width: 50%;
+            margin: auto;
+            padding: 1em;
+        }
     </style>
 </head>
 <body>
@@ -11,7 +18,6 @@
 
 <!--
     This is the start of the bfwp donation slider.
-    bfwp-ds-
 -->
 
 <div id="bfwp-donation-slider">
@@ -51,9 +57,9 @@ const BOTTLE_MAX = 1100;
 const SALARY_MAX = 3000;
 const MEAL_MAX = 10000;
 
-const BOTTLE_CONV = 0.1;
-const MEAL_CONV = 0.55;
-const SALARY_CONV = 100;
+const BOTTLE_CONV = 0.1;    // how much does it cost to save 1 bottle in CHF?
+const MEAL_CONV = 1.88;     // how much is one meal in CHF?
+const SALARY_CONV = 100;    // how much is one salary in CHF?
 
 // set max values of sliders upon loading page
 window.onload = function() {
