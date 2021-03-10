@@ -14,7 +14,7 @@
     bfwp-ds-
 -->
 
-<div id="bfw-donation-slider">
+<div id="bfwp-donation-slider">
 
 <style>
 .bfwp-slider {
@@ -47,10 +47,26 @@
 
 <script>
 
+const BOTTLE_MAX = 1100;
+const SALARY_MAX = 3000;
+const MEAL_MAX = 10000;
+
+const BOTTLE_CONV = 0.1;
+const MEAL_CONV = 0.55;
+const SALARY_CONV = 100;
+
+// set max values of sliders upon loading page
+window.onload = function() {
+    document.getElementById("bfwp-bottle-slider").max = BOTTLE_MAX;
+    document.getElementById("bfwp-meal-slider").max = MEAL_MAX;
+    document.getElementById("bfwp-salary-slider").max = SALARY_MAX;
+}
+
 function valueChange() {
     document.getElementById("bfwp-bottle-slider").value = document.getElementById("bfwp-bottle-number").value;
     document.getElementById("bfwp-meal-slider").value = document.getElementById("bfwp-meal-number").value;
     document.getElementById("bfwp-salary-slider").value = document.getElementById("bfwp-salary-number").value;
+    sliderChange(); // prevents setting values greater than MAX
     update();
 }
 
@@ -63,10 +79,10 @@ function sliderChange() {
 
 function update() {
     var chf = 0;
-    chf += parseInt(document.getElementById("bfwp-bottle-slider").value);
-    chf += parseInt(document.getElementById("bfwp-meal-number").value);
-    chf += parseInt(document.getElementById("bfwp-salary-number").value);
-    document.getElementById("bfwp-chf").innerHTML = chf;
+    chf += parseInt(document.getElementById("bfwp-bottle-number").value) * BOTTLE_CONV;
+    chf += parseInt(document.getElementById("bfwp-meal-number").value) * MEAL_CONV;
+    chf += parseInt(document.getElementById("bfwp-salary-number").value) * SALARY_CONV;
+    document.getElementById("bfwp-chf").innerHTML = Math.floor(chf);
 }
 </script>
 
@@ -79,7 +95,7 @@ function update() {
             <label>Plastic Bottles saved</label>
         </td>
         <td>
-            <input type="range" min="0" max="1200" name="" onchange="sliderChange()" class="bfwp-slider" id="bfwp-bottle-slider" value="0">
+            <input type="range" min="0" name="" onchange="sliderChange()" class="bfwp-slider" id="bfwp-bottle-slider" value="0">
         </td>
         <td>
             <input type="number" class="bfwp-number" id="bfwp-bottle-number" value="0" onchange="valueChange()">
@@ -91,7 +107,7 @@ function update() {
             <label>Meals distributed</label>
         </td>
         <td>
-            <input type="range" min="0" max="1200" name="" onchange="sliderChange()" class="bfwp-slider" id="bfwp-meal-slider" value="0">
+            <input type="range" min="0" name="" onchange="sliderChange()" class="bfwp-slider" id="bfwp-meal-slider" value="0">
         </td>
         <td>
             <input type="number" class="bfwp-number" id="bfwp-meal-number" value="0" onchange="valueChange()">
@@ -103,7 +119,7 @@ function update() {
             <label>Salaries paid</label>
         </td>
         <td>
-            <input type="range" min="0" max="1200" name="" onchange="sliderChange()" class="bfwp-slider" id="bfwp-salary-slider" value="0">
+            <input type="range" min="0" name="" onchange="sliderChange()" class="bfwp-slider" id="bfwp-salary-slider" value="0">
         </td>
         <td>
             <input type="number" class="bfwp-number" id="bfwp-salary-number" value="0" onchange="valueChange()">
@@ -114,6 +130,7 @@ function update() {
 <p>Donations needed: <span id="bfwp-chf">0</span> CHF</p>
 
 </div>
+
 
 <!--
     This is the end of the bfwp donation slider
