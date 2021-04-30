@@ -4,38 +4,57 @@
         body {
             font-family: 'Nunito', fjalla one;
         }
-        span {
-            font-size: 2em;
-            font-weight: bold;
-        }
+        
     </style>
 </head>
 <body>
 
-<p>Bottles saved <span id="bottles">0</span></p>
-<p>Meals distributed <span id="meals">0</span></p>
-<p>Salaries paid <span id="salary">0</span></p>
-<p>Families supported <span id="families">0</span></p>
+
+<div id="bfwp-counter">
+
+<style>
+    #bfwp-counter {
+        font-family: sans-serif;
+    }
+    span {
+        font-size: 2em;
+        font-weight: bold;
+    }
+</style>
+
+<p><span id="bottles">0</span> plastic bottles saved</p>
+<p><span id="meals">0</span> meals distributed</p>
+<p><span id="salary">0</span> daily salaries paid in our target countries</p>
+<p><span id="families">0</span> families supported</p>
+<p><span id="deliveries">0</span> home deliveries executed</p>
+<p><span id="people">0</span> people supported</p>
+<p><span id="events">0</span> BFWP events executed</p>
+<p><span id="houses">0</span> plastic bottle houses built</p>
 
 <script>
 const DURATION = 2000; // in milliseconds
-const BOTTLES_SAVED = 32400;
-const MEALS_DISTRIBUTED = 19800;
-const SALARRIES_PAID = 391;
-const FAMILIES_SUPPORTED = 160;
+const BOTTLES_SAVED = 35137;
+const MEALS_DISTRIBUTED = 35550;
+const SALARRIES_PAID = 535;
+const FAMILIES_SUPPORTED = 310;
+const DELIVERIES = 5;
+const PEOPLE = 1570;
+const EVENTS = 20;
+const HOUSES = 1;
 
 function animateValue(id, start, end, duration) {
     if (start === end) return;
     var range = end - start;
     var current = start;
-    var increment_size = end > 10000 ? 100 : 1;
-    var increment = end > start? increment_size : -1 * increment_size;
+    var increment_size = end > 10000 ? 100 : 5;
+    var increment = end > start ? increment_size : -1 * increment_size;
     var stepTime = Math.abs(Math.floor(duration / range));
     var obj = document.getElementById(id);
     var timer = setInterval(function() {
         current += increment;
         obj.innerHTML = current;
-        if (current == end) {
+        if (current >= end) {
+            document.getElementById(id).innerHTML = end;
             clearInterval(timer);
         }
     }, stepTime);
@@ -46,8 +65,14 @@ window.onload = function() {
     animateValue("meals", 0, MEALS_DISTRIBUTED, DURATION);
     animateValue("salary", 0, SALARRIES_PAID, DURATION);
     animateValue("families", 0, FAMILIES_SUPPORTED, DURATION);
+    animateValue("deliveries", 0, DELIVERIES, DURATION);
+    animateValue("people", 0, PEOPLE, DURATION);
+    animateValue("houses", 0, HOUSES, DURATION);
+    animateValue("events", 0, EVENTS, DURATION);
 }
 </script>
+</div>
+
 
 </body>
 </html>
